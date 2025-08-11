@@ -2,6 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { Logger } from '@nestjs/common';
+import { configureAppGlobals } from './app';
 
 const PORT = 3000
 
@@ -15,6 +16,8 @@ async function bootstrap() {
     .setVersion('1.0')
     .build();
 
+  configureAppGlobals(app);
+
   const documentFactory = () => SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('documentation', app, documentFactory);
 
@@ -23,4 +26,5 @@ async function bootstrap() {
     logger.log(`Documentation is available at: http://localhost:${PORT}/documentation`);
   });
 }
+
 bootstrap();

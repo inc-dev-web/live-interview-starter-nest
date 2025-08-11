@@ -8,3 +8,4 @@ This project is configured to use `pnpm` via `corepack`. If you are not using co
 
 - NestJS
 - Swagger
+- Vitest (E2E testing)
